@@ -83,8 +83,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        serif: ["var(--font-serif)"],
+        sans: ["'Open Sans'", "sans-serif"],
+        display: ["'Montserrat'", "sans-serif"],
         mono: ["var(--font-mono)"],
       },
       keyframes: {

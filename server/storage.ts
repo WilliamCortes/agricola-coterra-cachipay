@@ -1,38 +1,52 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
-
-// modify the interface with any CRUD methods
-// you might need
+import { db } from "./db";
+import {
+  categories,
+  products,
+  testimonials,
+  messages,
+  type Category,
+  type Product,
+  type Testimonial,
+  type Message,
+  type InsertMessage // Added InsertMessage
+} from "@shared/schema";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getCategories(): Promise<Category[]>;
+  getCategoryBySlug(slug: string): Promise<Category | undefined>;
+  getProducts(): Promise<Product[]>;
+  getProductsByCategory(categoryId: number): Promise<Product[]>;
+  getTestimonials(): Promise<Testimonial[]>;
+  createMessage(message: InsertMessage): Promise<Message>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
-
-  constructor() {
-    this.users = new Map();
+export class DatabaseStorage implements IStorage {
+  async getCategories(): Promise<Category[]> {
+    return await db.select().from(categories);
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async getCategoryBySlug(slug: string): Promise<Category | undefined> {
+    const [category] = await db.select().from(categories).where(eq(categories.slug, slug));
+    return category;
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+  async getProducts(): Promise<Product[]> {
+    return await db.select().from(products);
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async getProductsByCategory(categoryId: number): Promise<Product[]> {
+    return await db.select().from(products).where(eq(products.categoryId, categoryId));
+  }
+
+  async getTestimonials(): Promise<Testimonial[]> {
+    return await db.select().from(testimonials);
+  }
+
+  async createMessage(message: InsertMessage): Promise<Message> {
+    const [newMessage] = await db.insert(messages).values(message).returning();
+    return newMessage;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
