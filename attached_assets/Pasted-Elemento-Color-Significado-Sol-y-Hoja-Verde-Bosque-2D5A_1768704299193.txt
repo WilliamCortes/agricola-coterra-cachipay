@@ -1,0 +1,61 @@
+Elemento	Color	Significado
+Sol y Hoja	Verde Bosque (#2D5A27)	Vegetación, crecimiento, naturaleza
+Letra "C" y Campo	Marrón Tierra (#8B4513)	Suelo fértil, agricultura, estabilidad
+Fondo	Blanco (#FFFFFF)	Limpieza, profesionalismo
+Prompt para Generar el Diseño
+Copia y pega este prompt en tu herramienta de IA preferida (Midjourney, DALL-E, Leonardo AI, etc.):
+
+Website design for an agricultural supply store called "Agrícola Coterra" located in Cachipay, Cundinamarca, Colombia. The store sells animal feed, pet products, agricultural inputs, and farming tools. 
+
+COLOR PALETTE (strict adherence required):
+- Primary: Forest green (#2D5A27) - for headers, navigation, and nature elements
+- Secondary: Earth brown (#8B4513) - for buttons, accents, and agricultural elements
+- Background: Clean white (#FFFFFF) - for main areas
+- Accent: Light cream/beige for subtle backgrounds
+
+DESIGN REQUIREMENTS:
+1. Homepage hero section featuring a welcoming rural landscape background with soft green rolling hills and blue sky
+2. Circular logo integration in the top-left corner showing a stylized sun with green rays, a brown "C" with a green leaf, and brown/green wave patterns representing farmland
+3. Product categories displayed as clean cards: "Alimentos para Animales", "Mascotas", "Insumos Agrícolas", and "Herramientas"
+4. Nature-forward design with subtle leaf patterns, wheat stalks, and sun motifs as decorative elements
+5. Navigation menu with forest green background and white text
+6. Call-to-action buttons in earth brown with rounded corners
+7. Testimonial section featuring a farmer with their crops or animals
+8. Footer with contact information, location in Cachipay, Cundinamarca, and social media links
+
+STYLE: Modern flat design, clean typography, eco-friendly aesthetic, professional yet warm and welcoming. The overall feel should evoke Colombian countryside, agricultural tradition, and natural productivity. High resolution, professional web design mockup, 16:9 aspect ratio.
+Aplicación de la Paleta de Colores
+Colores Principales
+Verde Bosque: #2D5A27
+┌─────────────────────────────────────┐
+│ ████████ ████████ ████████ ████████ │
+│ ████████ ████████ ████████ ████████ │
+└─────────────────────────────────────┘
+
+Marrón Tierra: #8B4513
+┌─────────────────────────────────────┐
+│ ████████ ████████ ████████ ████████ │
+│ ████████ ████████ ████████ ████████ │
+└─────────────────────────────────────┘
+Usos Recomendados
+Elemento	Color	Uso
+Verde Bosque	#2D5A27	Encabezados, menú de navegación, iconos de naturaleza, bordes de tarjetas
+Marrón Tierra	#8B4513	Botones de acción,footer, elementos agrícolas, texto destacado
+Blanco	#FFFFFF	Fondos principales, áreas de contenido, tarjetas de productos
+Crema Suave	#F5F5DC	Fondos de secciones alternativas, separadores
+Descripción del Diseño Generado
+El diseño resultante debe transmitir:
+
+1.
+Conexión con la Naturaleza: El verde representa los cultivos, la vegetación y el crecimiento constante de la región de Cundinamarca.
+2.
+Tradición Agrícola: El marrón evoca la tierra fértil de Cachipay, famosa por su producción agrícola y clima privilegiado.
+3.
+Profesionalismo Rural: La combinación de colores crea una imagen de confianza y experiencia en el sector agropecuadoriano.
+4.
+Bienvenida Cálida: Los tonos terrosos transmiten calidez humana, typical del campo colombiano.
+Sugerencias Adicionales
+Tipografía: Usa fuentes sans-serif limpias como Montserrat, Open Sans o Lato para mantener la legibilidad
+Fotografías: Incluye imágenes reales de Cachipay y productos agrícolas locales
+Iconografía: Utiliza íconos de hojas, semillas, herramientas y animales en los colores del logo
+Espaciado: Mantén áreas amplias de "aire" para que el diseño se sienta limpio y profesional
