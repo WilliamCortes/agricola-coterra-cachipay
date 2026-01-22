@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Tractor, ShoppingBag, Phone, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import logoImg from "@/assets/logo.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,8 +36,15 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="bg-primary p-2 rounded-lg group-hover:bg-primary/90 transition-colors">
-              <Tractor className="h-6 w-6 text-white" />
+     <div className="relative group-hover:scale-105 transition-transform duration-300">
+              <img 
+                src={logoImg} 
+                alt="Agrícola Coterra Logo" 
+                className={cn(
+                  "h-12 w-12 md:h-14 md:w-14 object-contain rounded-full bg-white p-0.5 shadow-sm",
+                  scrolled ? "border border-primary/20" : "border-2 border-white/50"
+                )} 
+              />
             </div>
             <span className={cn(
               "font-display font-bold text-xl md:text-2xl tracking-tight transition-colors",

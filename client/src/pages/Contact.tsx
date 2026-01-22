@@ -50,8 +50,7 @@ export default function Contact() {
                   </div>
                   <h3 className="font-bold text-lg mb-2">Teléfono</h3>
                   <p className="text-muted-foreground text-sm">
-                    +57 310 123 4567<br />
-                    +57 601 123 4567
+                    +57 320 334 7765
                   </p>
                 </div>
 
@@ -79,13 +78,14 @@ export default function Contact() {
               </div>
 
               {/* Map Placeholder */}
-              <div className="bg-muted rounded-2xl h-64 w-full overflow-hidden relative shadow-inner">
-                {/* Embed google map iframe here in production */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-                  <p className="text-gray-500 font-medium flex items-center gap-2">
-                    <MapPin className="h-5 w-5" /> Mapa de Google
-                  </p>
-                </div>
+              <div className="rounded-2xl h-64 w-full overflow-hidden relative shadow-inner bg-muted">
+                <iframe
+                  title="Ubicación en Google Maps"
+                  src="https://www.google.com/maps?q=4.7309438,-74.4356346&z=18&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 w-full h-full border-0"
+                />
               </div>
             </div>
 

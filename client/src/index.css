@@ -36,6 +36,18 @@
   --input: 113 15% 90%;
   --ring: 113 40% 25%;
 
+  /* Admin sidebar tokens (used by components/ui/sidebar.tsx) */
+  --sidebar: 113 40% 25%;
+  --sidebar-foreground: 60 30% 96%;
+  --sidebar-border: 113 20% 18%;
+  --sidebar-ring: 113 40% 35%;
+  --sidebar-primary: 25 76% 31%;
+  --sidebar-primary-foreground: 60 30% 96%;
+  --sidebar-primary-border: rgb(139 69 19 / 0.35);
+  --sidebar-accent: 113 35% 20%;
+  --sidebar-accent-foreground: 60 30% 96%;
+  --sidebar-accent-border: rgb(255 255 255 / 0.12);
+
   --radius: 0.75rem;
 
   --font-display: 'Montserrat', sans-serif;
@@ -61,5 +73,9 @@
   
   .text-shadow-lg {
     text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .hs-banner-optimization-animation {
+    @apply animate-in slide-in-from-bottom-4 duration-300;
   }
 }

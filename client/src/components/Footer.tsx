@@ -1,5 +1,7 @@
 import { Link } from "wouter";
+import { cn } from "@/lib/utils";
 import { Tractor, MapPin, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
+import logoImg from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -9,9 +11,15 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="bg-white/10 p-2 rounded-lg">
-                <Tractor className="h-6 w-6 text-white" />
-              </div>
+            <div className="relative group hover:scale-105 transition-transform duration-300">
+              <img 
+                src={logoImg} 
+                alt="Agrícola Coterra Logo" 
+                className={cn(
+                  "h-12 w-12 md:h-14 md:w-14 object-contain rounded-full bg-white p-0.5 shadow-sm border-2 border-white/50"
+                )} 
+              />
+            </div>
               <span className="font-display font-bold text-xl tracking-tight">Agrícola Coterra</span>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed text-sm">
@@ -33,7 +41,12 @@ export function Footer() {
                 <Link href="/contact" className="text-primary-foreground/80 hover:text-white hover:translate-x-1 transition-all inline-block">Contáctanos</Link>
               </li>
               <li>
-                <span className="text-primary-foreground/50 cursor-not-allowed">Política de Privacidad</span>
+                <Link
+                  href="/privacy"
+                  className="text-primary-foreground/80 hover:text-white hover:translate-x-1 transition-all inline-block"
+                >
+                  Política de Privacidad
+                </Link>
               </li>
             </ul>
           </div>
@@ -51,7 +64,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-secondary shrink-0" />
-                <span className="text-primary-foreground/80">+57 310 123 4567</span>
+                <span className="text-primary-foreground/80">+57 320 334 7765</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-secondary shrink-0" />

@@ -1,0 +1,156 @@
+{
+  "owners": [
+    {
+      "tablename": "admin_activity_logs",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "admin_refresh_tokens",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "admin_users",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "business_settings",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "categories",
+      "tableowner": "postgres"
+    },
+    {
+      "tablename": "customer_interactions",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "customer_notes",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "customers",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "inventory_movements",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "messages",
+      "tableowner": "postgres"
+    },
+    {
+      "tablename": "order_items",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "order_returns",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "order_status_history",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "orders",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "password_reset_tokens",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "product_images",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "products",
+      "tableowner": "postgres"
+    },
+    {
+      "tablename": "stock_levels",
+      "tableowner": "app_user"
+    },
+    {
+      "tablename": "testimonials",
+      "tableowner": "postgres"
+    },
+    {
+      "tablename": "warehouses",
+      "tableowner": "app_user"
+    }
+  ],
+  "columns": {
+    "categories": [
+      {
+        "column_name": "id",
+        "data_type": "integer"
+      },
+      {
+        "column_name": "name",
+        "data_type": "text"
+      },
+      {
+        "column_name": "slug",
+        "data_type": "text"
+      },
+      {
+        "column_name": "description",
+        "data_type": "text"
+      },
+      {
+        "column_name": "image_url",
+        "data_type": "text"
+      }
+    ],
+    "products": [
+      {
+        "column_name": "id",
+        "data_type": "integer"
+      },
+      {
+        "column_name": "category_id",
+        "data_type": "integer"
+      },
+      {
+        "column_name": "name",
+        "data_type": "text"
+      },
+      {
+        "column_name": "description",
+        "data_type": "text"
+      },
+      {
+        "column_name": "price",
+        "data_type": "integer"
+      },
+      {
+        "column_name": "image_url",
+        "data_type": "text"
+      },
+      {
+        "column_name": "stock",
+        "data_type": "integer"
+      }
+    ],
+    "messages": [
+      {
+        "column_name": "id",
+        "data_type": "integer"
+      },
+      {
+        "column_name": "name",
+        "data_type": "text"
+      },
+      {
+        "column_name": "email",
+        "data_type": "text"
+      },
+      {
+        "column_name": "message",
+        "data_type": "text"
+      }
+    ]
+  }
+}
