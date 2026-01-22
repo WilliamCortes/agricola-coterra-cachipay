@@ -5,27 +5,21 @@
 @tailwind utilities;
 
 :root {
-  /* HSL Color Palette */
-  /* Primary Forest Green (#2D5A27) -> 113 40% 25% */
   --primary: 113 40% 25%;
   --primary-foreground: 60 30% 96%;
 
-  /* Secondary Earth Brown (#8B4513) -> 25 76% 31% */
   --secondary: 25 76% 31%;
   --secondary-foreground: 60 30% 96%;
 
-  /* Accent Light Cream/Beige (#F5F5DC) -> 60 56% 91% */
   --accent: 60 56% 91%;
   --accent-foreground: 113 40% 25%;
 
-  /* Background White */
   --background: 0 0% 100%;
   --foreground: 113 40% 15%;
 
-  /* Muted tones for depth */
   --muted: 113 15% 95%;
   --muted-foreground: 113 10% 40%;
-  
+
   --card: 0 0% 100%;
   --card-foreground: 113 40% 15%;
 
@@ -36,7 +30,6 @@
   --input: 113 15% 90%;
   --ring: 113 40% 25%;
 
-  /* Admin sidebar tokens (used by components/ui/sidebar.tsx) */
   --sidebar: 113 40% 25%;
   --sidebar-foreground: 60 30% 96%;
   --sidebar-border: 113 20% 18%;

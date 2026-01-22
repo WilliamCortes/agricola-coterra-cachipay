@@ -1,11 +1,11 @@
 import type { Express } from "express";
 import express from "express";
 import { z } from "zod";
-import { db } from "../../../db";
-import { productImages, products } from "@shared/schema";
+import { db } from "../../../db.js";
+import { productImages, products } from "../../../../shared/schema.js";
 import { and, asc, desc, eq, ilike, or, sql } from "drizzle-orm";
-import { JoseTokenService } from "../infrastructure/jwt/JoseTokenService";
-import { createRequireAdminAuth } from "./http/requireAdminAuth";
+import { JoseTokenService } from "../infrastructure/jwt/JoseTokenService.js";
+import { createRequireAdminAuth } from "./http/requireAdminAuth.js";
 import crypto from "crypto";
 
 const listQuerySchema = z.object({

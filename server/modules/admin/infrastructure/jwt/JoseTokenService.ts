@@ -1,5 +1,5 @@
 import { SignJWT, jwtVerify } from "jose";
-import type { TokenService, AccessTokenPayload } from "../../domain/ports/TokenService";
+import type { TokenService, AccessTokenPayload } from "../../domain/ports/TokenService.js";
 
 export class JoseTokenService implements TokenService {
   constructor(private readonly secret: string) {}

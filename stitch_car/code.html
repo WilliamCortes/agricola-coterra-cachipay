@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Carrito de Compras - Agrícola Coterra</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2D5A27", // Forest Green
+                        secondary: "#8B4513", // Earth Brown
+                        cream: "#F5F5DC", // Cream Accent
+                        "background-light": "#FFFFFF", 
+                        "background-dark": "#111827",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1F2937",
+                    },
+                    fontFamily: {
+                        display: ["Poppins", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300 flex flex-col min-h-screen">
+<header class="bg-primary shadow-lg sticky top-0 z-50">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex-shrink-0 flex items-center gap-3">
+<a class="flex items-center gap-3" href="#">
+<img alt="Logo Agrícola Coterra" class="h-14 w-14 rounded-full border-2 border-white/20 bg-white object-contain p-0.5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOYl9kFuuX9lotkEBSxuQVwY3BtLTfpXD2sPvkK1JVE9Ip0yn58vBLOgxA87zhwgHg4eUEa6AF2ZqgWkDHT2L0ADl4KKJ_XA_ONX93BiKjEo8SKVBVxyTC3Y4HcUF5qJNPaKc0I3xYrtur46KYQ2YMKZCmp41mwxbzaJrAQuVRq40Ay3n890XSgnv_aPuGIfSNTxkWmY_sRxO0pHmz_blKN8J-bQdhGAzonCHEz87R84BRrtYOg15RPFEgf6nN9-nA1jJLlmpjtcs"/>
+<span class="text-white font-display font-bold text-xl tracking-wide hidden sm:block">AGRÍCOLA COTERRA</span>
+</a>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a class="text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Inicio</a>
+<a class="text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Productos</a>
+<a class="text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<a class="text-white hover:bg-white/10 p-2 rounded-full transition-colors relative" href="#">
+<span class="material-icons">shopping_cart</span>
+<span class="absolute top-1 right-1 h-2.5 w-2.5 bg-secondary rounded-full border-2 border-primary"></span>
+</a>
+</div>
+<button class="text-white p-2 rounded-full hover:bg-white/10 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons text-xl dark:hidden">dark_mode</span>
+<span class="material-icons text-xl hidden dark:block">light_mode</span>
+</button>
+<div class="md:hidden flex items-center">
+<button class="text-white hover:text-gray-200 focus:outline-none" type="button">
+<span class="material-icons text-3xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<nav aria-label="Breadcrumb" class="flex text-sm mb-6 text-gray-500">
+<ol class="inline-flex items-center space-x-1 md:space-x-3">
+<li class="inline-flex items-center">
+<a class="hover:text-primary transition-colors flex items-center" href="#">
+<span class="material-icons text-sm mr-1">home</span> Inicio
+                </a>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-icons text-base text-gray-400 mx-1">chevron_right</span>
+<span class="font-medium text-gray-900 dark:text-white">Carrito de Compras</span>
+</div>
+</li>
+</ol>
+</nav>
+<h1 class="text-3xl sm:text-4xl font-display font-bold text-primary dark:text-green-400 mb-8 border-b border-gray-200 dark:border-gray-700 pb-4">
+        Carrito de Compras <span class="text-lg font-normal text-gray-500 dark:text-gray-400 ml-2">(3 productos)</span>
+</h1>
+<div class="flex flex-col lg:flex-row gap-10">
+<div class="w-full lg:w-3/4">
+<div class="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-gray-200 dark:border-gray-700 text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+<div class="col-span-6">Producto</div>
+<div class="col-span-2 text-center">Precio Unit.</div>
+<div class="col-span-2 text-center">Cantidad</div>
+<div class="col-span-2 text-right">Subtotal</div>
+</div>
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-6 items-center py-6 border-b border-gray-100 dark:border-gray-800 hover:bg-cream/20 dark:hover:bg-gray-800/50 rounded-lg transition-colors px-2">
+<div class="md:col-span-6 flex items-start sm:items-center gap-4">
+<div class="w-24 h-24 flex-shrink-0 bg-white dark:bg-gray-700 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-600 shadow-sm">
+<img alt="Fertilizante NPK" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD41BAnW8pF8K4o-YIN0jhYtR3pXSjGbIEL-T6kI0uEXBGqW_gNQxOqpg7zgpQPeXjyDdWBruxeTqj8MmftIKZvE3xfBamgSzbEiwTo_iSCtrkqzhNxxQARbzs03Z8iEEp3prTivMYTs1pT-M-kdtKJypCKnWgg_dJD8aPxCKHQdLQbHWTx9mKcButMmAXg7E8RtNYZ75dgV2i55R1YZYnABriClVW9fJgGLmVxiMd9cIXUZoroQCVyHCfbzUSwt-Fx1alagjiyCk"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-primary uppercase tracking-wide mb-1">Insumos</span>
+<h3 class="font-display font-bold text-gray-900 dark:text-white text-lg leading-tight">Fertilizante NPK 15-15-15</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Saco de 50kg</p>
+<button class="text-red-500 hover:text-red-700 text-sm mt-3 hover:underline flex items-center gap-1 w-max transition-colors">
+<span class="material-icons text-sm">delete_outline</span> Eliminar
+                        </button>
+</div>
+</div>
+<div class="md:col-span-2 flex md:justify-center items-center gap-2 md:gap-0 mt-2 md:mt-0">
+<span class="md:hidden text-sm text-gray-500 font-medium">Precio:</span>
+<span class="font-medium text-gray-700 dark:text-gray-300">$125.000</span>
+</div>
+<div class="md:col-span-2 flex md:justify-center items-center gap-2 md:gap-0 mt-2 md:mt-0">
+<span class="md:hidden text-sm text-gray-500 font-medium mr-2">Cantidad:</span>
+<div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 overflow-hidden shadow-sm">
+<button class="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors">-</button>
+<input class="w-10 text-center border-0 p-0 text-sm bg-transparent dark:text-white focus:ring-0 font-medium" readonly="" value="2"/>
+<button class="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors">+</button>
+</div>
+</div>
+<div class="md:col-span-2 flex md:justify-end items-center gap-2 md:gap-0 mt-2 md:mt-0">
+<span class="md:hidden text-sm text-gray-500 font-medium">Subtotal:</span>
+<span class="font-bold text-gray-900 dark:text-white text-lg">$250.000</span>
+</div>
+</div>
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-6 items-center py-6 border-b border-gray-100 dark:border-gray-800 hover:bg-cream/20 dark:hover:bg-gray-800/50 rounded-lg transition-colors px-2">
+<div class="md:col-span-6 flex items-start sm:items-center gap-4">
+<div class="w-24 h-24 flex-shrink-0 bg-white dark:bg-gray-700 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-600 shadow-sm">
+<img alt="Concentrado para ganado" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC93sSn3yb0v_jcW_ZTrTexrAkYJotXGdPHPjPZpyxtbvhlh8nr5Nbk0iFysMrQIvAy9CR7gx2yKj05iuSwbXr_j2-Bguz1G_L2prtLArrpVrW8YA2bwbkfToJiyBbFEmbWNZs9mAbpUdb4IK9lYLTtX6w2pMQuvC4Ox3lxo4fgVSTwF7w3xhJa9Gtln2yGM6Iz0ksNrnLEz3zaIBUEIUKt7kJPOktoDnJHpn5lVej-UaqsuodWHqsgdjZ38f6gSgaTOE7oaZXxn2Y"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-primary uppercase tracking-wide mb-1">Alimentos</span>
+<h3 class="font-display font-bold text-gray-900 dark:text-white text-lg leading-tight">NutriGanado Pro</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Bulto 40kg</p>
+<button class="text-red-500 hover:text-red-700 text-sm mt-3 hover:underline flex items-center gap-1 w-max transition-colors">
+<span class="material-icons text-sm">delete_outline</span> Eliminar
+                        </button>
+</div>
+</div>
+<div class="md:col-span-2 flex md:justify-center items-center gap-2 md:gap-0 mt-2 md:mt-0">
+<span class="md:hidden text-sm text-gray-500 font-medium">Precio:</span>
+<span class="font-medium text-gray-700 dark:text-gray-300">$85.000</span>
+</div>
+<div class="md:col-span-2 flex md:justify-center items-center gap-2 md:gap-0 mt-2 md:mt-0">
+<span class="md:hidden text-sm text-gray-500 font-medium mr-2">Cantidad:</span>
+<div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 overflow-hidden shadow-sm">
+<button class="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors">-</button>
+<input class="w-10 text-center border-0 p-0 text-sm bg-transparent dark:text-white focus:ring-0 font-medium" readonly="" value="1"/>
+<button class="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors">+</button>
+</div>
+</div>
+<div class="md:col-span-2 flex md:justify-end items-center gap-2 md:gap-0 mt-2 md:mt-0">
+<span class="md:hidden text-sm text-gray-500 font-medium">Subtotal:</span>
+<span class="font-bold text-gray-900 dark:text-white text-lg">$85.000</span>
+</div>
+</div>
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-6 items-center py-6 border-b border-gray-100 dark:border-gray-800 hover:bg-cream/20 dark:hover:bg-gray-800/50 rounded-lg transition-colors px-2">
+<div class="md:col-span-6 flex items-start sm:items-center gap-4">
+<div class="w-24 h-24 flex-shrink-0 bg-white dark:bg-gray-700 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-600 shadow-sm">
+<img alt="Machete" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQQvgtOcSG7IdCsH5qnFjPdpr2-dHmrMU6dnoeaDa5Wh9lFDKUibckA7wPkUAyF6gwfwJTgcLXdsx9Jw5_VjKpsTz2TXR3JUxcc73DoVZ8Vx-a1zDpZAMXJmVzKmaI1_ziLuQDXviMokVJKAoP6txVQJzntvDk-ZgeWdqoBdtmhuXCklxBgpRx1Mhinz5Wrn_3BhHpbkM33Mhs5HnSG-cwpFUo41nF5sO6hgoXkr90mDJ-RaMNZTPmcxkTe7zmL8To5eSroQyZcIs"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-primary uppercase tracking-wide mb-1">Herramientas</span>
+<h3 class="font-display font-bold text-gray-900 dark:text-white text-lg leading-tight">Machete Colima 22"</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Acero templado</p>
+<button class="text-red-500 hover:text-red-700 text-sm mt-3 hover:underline flex items-center gap-1 w-max transition-colors">
+<span class="material-icons text-sm">delete_outline</span> Eliminar
+                        </button>
+</div>
+</div>
+<div class="md:col-span-2 flex md:justify-center items-center gap-2 md:gap-0 mt-2 md:mt-0">
+<span class="md:hidden text-sm text-gray-500 font-medium">Precio:</span>
+<span class="font-medium text-gray-700 dark:text-gray-300">$32.000</span>
+</div>
+<div class="md:col-span-2 flex md:justify-center items-center gap-2 md:gap-0 mt-2 md:mt-0">
+<span class="md:hidden text-sm text-gray-500 font-medium mr-2">Cantidad:</span>
+<div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 overflow-hidden shadow-sm">
+<button class="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors">-</button>
+<input class="w-10 text-center border-0 p-0 text-sm bg-transparent dark:text-white focus:ring-0 font-medium" readonly="" value="1"/>
+<button class="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors">+</button>
+</div>
+</div>
+<div class="md:col-span-2 flex md:justify-end items-center gap-2 md:gap-0 mt-2 md:mt-0">
+<span class="md:hidden text-sm text-gray-500 font-medium">Subtotal:</span>
+<span class="font-bold text-gray-900 dark:text-white text-lg">$32.000</span>
+</div>
+</div>
+<div class="mt-8 flex justify-between items-center">
+<a class="text-primary hover:text-green-700 font-medium flex items-center gap-2 transition-colors" href="#">
+<span class="material-icons text-sm">arrow_back</span> Seguir Comprando
+                </a>
+</div>
+</div>
+<div class="w-full lg:w-1/4">
+<div class="sticky top-28 bg-cream/30 dark:bg-gray-800 rounded-xl shadow-lg border border-cream dark:border-gray-700 overflow-hidden">
+<div class="bg-cream dark:bg-gray-700/50 px-6 py-5 border-b border-gray-200 dark:border-gray-600">
+<h2 class="text-xl font-display font-bold text-gray-900 dark:text-white">Resumen de compra</h2>
+</div>
+<div class="p-6 space-y-5">
+<div class="flex justify-between text-gray-600 dark:text-gray-300">
+<span>Subtotal (4 items)</span>
+<span class="font-medium">$367.000 COP</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-gray-600 dark:text-gray-300">
+<span class="flex items-center gap-1">
+                                Envío 
+                                <span class="material-icons text-sm text-gray-400 cursor-help" title="Envío calculado según zona">help_outline</span>
+</span>
+<span class="font-medium">$15.000 COP</span>
+</div>
+<p class="text-xs text-primary font-medium flex items-center gap-1">
+<span class="material-icons text-xs">location_on</span> Zona: Cachipay
+                        </p>
+</div>
+<div class="border-t border-dashed border-gray-300 dark:border-gray-600 my-2"></div>
+<div class="flex justify-between items-end">
+<span class="text-lg font-bold text-gray-800 dark:text-gray-200">Total</span>
+<div class="text-right">
+<span class="block text-2xl font-bold text-secondary dark:text-[#CD853F] leading-none">$382.000</span>
+<span class="text-xs text-gray-400">COP</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-green-800 text-white font-bold py-3.5 px-4 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 mt-4 flex justify-center items-center gap-2">
+                        Proceder al Pago
+                        <span class="material-icons text-sm">lock</span>
+</button>
+<div class="flex flex-col items-center gap-2 mt-4 text-center">
+<p class="text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center gap-1">
+<span class="material-icons text-sm text-green-600">verified_user</span> Transacción 100% Segura
+                        </p>
+<div class="flex gap-2 opacity-60 grayscale hover:grayscale-0 transition-all">
+<div class="h-6 w-10 bg-blue-800 rounded"></div>
+<div class="h-6 w-10 bg-red-600 rounded"></div>
+<div class="h-6 w-10 bg-blue-500 rounded"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-gray-900 dark:bg-black text-white pt-16 pb-8 mt-auto">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<img alt="Logo Coterra Footer" class="h-10 w-10 rounded-full border border-white/20 bg-white p-0.5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2GxoVB2-ygpnfkGlV2ddqIqm6TpeunIrJxf5XZ2o4_LkkGp4FK8X41F_hmD26IBYCrr8RnADp8MHyDI3vaCjRi-cUvf6hdEb1k9BwarxhaAoYLDMxqvK1vmelVQhlrwKVKSaRVVkHqDmHrsdjXQUVlkZgKQ7MUhU654d4U5S2JVohbbeHy3OLjiavRshsDNyKr-RYyHWZerASgcTz6n22s_LbDCeMFLxMIvpf9rOEvcm78lXJXv27niSb19tV0Je2BM2b3xqJAHk"/>
+<span class="text-xl font-display font-bold">AGRÍCOLA COTERRA</span>
+</div>
+<p class="text-gray-400 text-sm leading-relaxed">
+                        Su aliado confiable en el campo. Todo lo que necesita para su finca y sus animales en un solo lugar.
+                    </p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4 text-green-400">Navegación</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Inicio</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Catálogo</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Nosotros</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Blog Agrícola</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4 text-green-400">Contacto</h3>
+<ul class="space-y-3 text-sm text-gray-400">
+<li class="flex items-start">
+<span class="material-icons text-sm mt-1 mr-2">location_on</span>
+                            Km 5 Vía Principal, Colombia
+                        </li>
+<li class="flex items-center">
+<span class="material-icons text-sm mr-2">phone</span>
+                            +57 300 123 4567
+                        </li>
+<li class="flex items-center">
+<span class="material-icons text-sm mr-2">email</span>
+                            info@agricolacoterra.com
+                        </li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4 text-green-400">Boletín</h3>
+<p class="text-gray-400 text-sm mb-4">Reciba ofertas y consejos agrícolas.</p>
+<form class="flex flex-col gap-2">
+<input class="bg-gray-800 border border-gray-700 text-white px-4 py-2 rounded focus:outline-none focus:border-green-500" placeholder="Su correo electrónico" type="email"/>
+<button class="bg-primary hover:bg-green-700 text-white px-4 py-2 rounded font-medium transition-colors">Suscribirse</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
+<p>© 2023 Agrícola Coterra. Todos los derechos reservados.</p>
+</div>
+</div>
+</footer>
+</body></html>

@@ -3,7 +3,6 @@ import { api, buildUrl } from "@shared/routes";
 import { useToast } from "@/hooks/use-toast";
 import type { Message } from "@shared/schema";
 
-// Categories
 export function useCategories() {
   return useQuery({
     queryKey: [api.categories.list.path],
@@ -15,7 +14,6 @@ export function useCategories() {
   });
 }
 
-// Products
 export function useProducts() {
   return useQuery({
     queryKey: [api.products.list.path],
@@ -40,7 +38,6 @@ export function useProductsByCategory(slug: string) {
   });
 }
 
-// Testimonials
 export function useTestimonials() {
   return useQuery({
     queryKey: [api.testimonials.list.path],
@@ -52,10 +49,8 @@ export function useTestimonials() {
   });
 }
 
-// Contact Form
 export function useContactMutation() {
   const { toast } = useToast();
-  
   return useMutation({
     mutationFn: async (data: Omit<Message, "id">) => {
       const res = await fetch(api.contact.submit.path, {
@@ -63,12 +58,10 @@ export function useContactMutation() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      
       if (!res.ok) {
         const error = await res.json();
         throw new Error(error.message || "Failed to send message");
       }
-      
       return api.contact.submit.responses[200].parse(await res.json());
     },
     onSuccess: () => {

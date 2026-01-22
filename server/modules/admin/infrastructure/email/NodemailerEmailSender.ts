@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import type { EmailSender } from "../../domain/ports/EmailSender";
+import type { EmailSender } from "../../domain/ports/EmailSender.js";
 
 export type SmtpConfig = {
   host: string;
@@ -23,8 +23,8 @@ export class NodemailerEmailSender implements EmailSender {
     await transporter.sendMail({
       from: this.config.fromEmail,
       to: input.toEmail,
-      subject: "Restablecer contraseña (Panel Admin)",
-      text: `Para restablecer tu contraseña, abre este enlace: ${input.resetUrl}`,
+      subject: "Reset Password (Admin Panel)",
+      text: `To reset your password, open this link: ${input.resetUrl}`,
     });
   }
 }

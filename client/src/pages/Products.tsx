@@ -19,16 +19,12 @@ export default function Products() {
   const { data: categories } = useCategories();
   const { data: allProducts, isLoading } = useProducts();
   
-  // Logic to handle client-side filtering since API is simple
-  // In a real large app, this would happen on backend
   const filteredProducts = allProducts?.filter(product => {
-    // 1. Filter by category if selected
     if (categorySlug) {
       const category = categories?.find(c => c.slug === categorySlug);
       if (category && product.categoryId !== category.id) return false;
     }
     
-    // 2. Filter by search term
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       return (
@@ -56,7 +52,6 @@ export default function Products() {
     <div className="min-h-screen flex flex-col font-sans bg-muted/10">
       <Navbar />
       
-      {/* Header */}
       <div className="bg-primary text-primary-foreground pt-32 pb-16 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">Nuestros Productos</h1>
@@ -67,9 +62,7 @@ export default function Products() {
       </div>
 
       <div className="container mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
-        {/* Sidebar Filters */}
         <aside className="lg:w-1/4 space-y-8">
-          {/* Search */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-border/50">
             <h3 className="font-display font-bold text-lg mb-4 flex items-center gap-2">
               <Search className="h-5 w-5 text-secondary" /> Buscar
@@ -82,7 +75,6 @@ export default function Products() {
             />
           </div>
 
-          {/* Categories */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-border/50">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-display font-bold text-lg flex items-center gap-2">
@@ -137,7 +129,6 @@ export default function Products() {
           </div>
         </aside>
 
-        {/* Product Grid */}
         <main className="lg:w-3/4">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-display font-bold text-primary">

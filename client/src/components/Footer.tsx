@@ -8,7 +8,6 @@ export function Footer() {
     <footer className="bg-primary text-primary-foreground pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
             <div className="relative group hover:scale-105 transition-transform duration-300">
@@ -27,7 +26,6 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="font-display font-bold text-lg mb-6 text-white">Enlaces Rápidos</h3>
             <ul className="space-y-3 text-sm">
@@ -51,7 +49,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className="font-display font-bold text-lg mb-6 text-white">Contacto</h3>
             <ul className="space-y-4 text-sm">
@@ -73,7 +70,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Hours */}
           <div>
             <h3 className="font-display font-bold text-lg mb-6 text-white">Horario</h3>
             <ul className="space-y-2 text-sm text-primary-foreground/80">

@@ -1,4 +1,4 @@
-import type { AdminUser } from "../entities/AdminUser";
+import type { AdminUser } from "../entities/AdminUser.js";
 
 export type AccessTokenPayload = {
   adminUserId: number;

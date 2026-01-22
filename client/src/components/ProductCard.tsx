@@ -14,7 +14,6 @@ export function ProductCard({ product }: ProductCardProps) {
   const { toast } = useToast();
   const [added, setAdded] = useState(false);
 
-  // Format price from cents to COP
   const price = new Intl.NumberFormat('es-CO', {
     style: 'currency',
     currency: 'COP',

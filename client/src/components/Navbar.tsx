@@ -54,7 +54,6 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <Link key={link.href} href={link.href}>
@@ -80,7 +79,6 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -95,7 +93,6 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-border animate-in slide-in-from-top-5 duration-200">
           <div className="flex flex-col p-4 space-y-4">

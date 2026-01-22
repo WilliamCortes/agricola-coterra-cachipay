@@ -8,7 +8,6 @@ export default function Contact() {
     <div className="min-h-screen flex flex-col font-sans">
       <Navbar />
 
-      {/* Hero Section */}
       <section className="bg-primary text-primary-foreground pt-32 pb-20 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">Contáctanos</h1>
@@ -22,7 +21,6 @@ export default function Contact() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             
-            {/* Info Column */}
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-display font-bold text-primary mb-6">Información de Contacto</h2>
@@ -77,7 +75,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
               <div className="rounded-2xl h-64 w-full overflow-hidden relative shadow-inner bg-muted">
                 <iframe
                   title="Ubicación en Google Maps"
@@ -89,7 +86,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Form Column */}
             <div>
               <ContactForm />
             </div>

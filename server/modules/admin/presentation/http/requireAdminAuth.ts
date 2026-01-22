@@ -1,6 +1,6 @@
 import type { RequestHandler } from "express";
-import { getCookie } from "./cookies";
-import type { TokenService } from "../../domain/ports/TokenService";
+import { getCookie } from "./cookies.js";
+import type { TokenService } from "../../domain/ports/TokenService.js";
 
 declare module "express-serve-static-core" {
   interface Request {

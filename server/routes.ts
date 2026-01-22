@@ -1,9 +1,9 @@
 import type { Express } from "express";
 import type { Server } from "http";
-import { storage } from "./storage";
-import { api } from "@shared/routes";
+import { storage } from "./storage.js";
+import { api } from "../shared/routes.js";
 import { z } from "zod";
-import { db } from "./db";
+import { db } from "./db.js";
 import {
   categories,
   legacyCategories,
@@ -13,19 +13,19 @@ import {
   stockLevels,
   testimonials,
   warehouses,
-} from "@shared/schema";
-import { registerAdminAuthRoutes } from "./modules/admin/presentation/adminAuthRoutes";
-import { registerAdminProductRoutes } from "./modules/admin/presentation/adminProductRoutes";
-import { registerAdminInventoryRoutes } from "./modules/admin/presentation/adminInventoryRoutes";
-import { registerAdminOrderRoutes } from "./modules/admin/presentation/adminOrderRoutes";
-import { registerAdminCustomerRoutes } from "./modules/admin/presentation/adminCustomerRoutes";
-import { registerAdminReportRoutes } from "./modules/admin/presentation/adminReportRoutes";
-import { registerAdminSettingsRoutes } from "./modules/admin/presentation/adminSettingsRoutes";
+} from "../shared/schema.js";
+import { registerAdminAuthRoutes } from "./modules/admin/presentation/adminAuthRoutes.js";
+import { registerAdminProductRoutes } from "./modules/admin/presentation/adminProductRoutes.js";
+import { registerAdminInventoryRoutes } from "./modules/admin/presentation/adminInventoryRoutes.js";
+import { registerAdminOrderRoutes } from "./modules/admin/presentation/adminOrderRoutes.js";
+import { registerAdminCustomerRoutes } from "./modules/admin/presentation/adminCustomerRoutes.js";
+import { registerAdminReportRoutes } from "./modules/admin/presentation/adminReportRoutes.js";
+import { registerAdminSettingsRoutes } from "./modules/admin/presentation/adminSettingsRoutes.js";
 
 export async function registerRoutes(
-  httpServer: Server,
-  app: Express
-): Promise<Server> {
+  app: Express,
+  httpServer?: Server,
+): Promise<Server | undefined> {
 
   registerAdminAuthRoutes(app);
   registerAdminProductRoutes(app);
@@ -34,6 +34,10 @@ export async function registerRoutes(
   registerAdminCustomerRoutes(app);
   registerAdminReportRoutes(app);
   registerAdminSettingsRoutes(app);
+
+  app.get("/api/health", (_req, res) => {
+    res.json({ status: "ok", timestamp: new Date().toISOString() });
+  });
 
   app.get(api.categories.list.path, async (req, res) => {
     const result = await storage.getCategories();
@@ -84,12 +88,6 @@ export async function registerRoutes(
       throw err;
     }
   });
-
-  try {
-    await seedDatabase();
-  } catch (err) {
-    console.error("Database seed skipped:", err);
-  }
 
   return httpServer;
 }

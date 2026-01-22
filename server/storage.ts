@@ -1,4 +1,4 @@
-import { db } from "./db";
+import { db } from "./db.js";
 import {
   categories,
   products,
@@ -9,7 +9,7 @@ import {
   type Testimonial,
   type Message,
   type InsertMessage
-} from "@shared/schema";
+} from "../shared/schema.js";
 import { eq } from "drizzle-orm";
 
 function isDbSchemaError(err: unknown): boolean {

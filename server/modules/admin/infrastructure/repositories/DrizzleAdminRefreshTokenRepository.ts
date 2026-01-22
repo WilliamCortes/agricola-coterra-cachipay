@@ -1,10 +1,10 @@
-import { db } from "../../../../db";
-import { adminRefreshTokens } from "@shared/schema";
+import { db } from "../../../../db.js";
+import { adminRefreshTokens } from "../../../../../shared/schema.js";
 import { and, eq, isNull, gt } from "drizzle-orm";
 import type {
   AdminRefreshTokenRepository,
   StoredRefreshToken,
-} from "../../domain/ports/AdminRefreshTokenRepository";
+} from "../../domain/ports/AdminRefreshTokenRepository.js";
 
 export class DrizzleAdminRefreshTokenRepository implements AdminRefreshTokenRepository {
   async create(input: { adminUserId: number; tokenHash: string; expiresAt: Date }): Promise<void> {

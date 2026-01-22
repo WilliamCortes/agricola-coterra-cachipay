@@ -1,7 +1,7 @@
-import { db } from "../../../../db";
-import { adminUsers } from "@shared/schema";
+import { db } from "../../../../db.js";
+import { adminUsers } from "../../../../../shared/schema.js";
 import { eq } from "drizzle-orm";
-import type { AdminUserRepository, AdminUserWithPassword } from "../../domain/ports/AdminUserRepository";
+import type { AdminUserRepository, AdminUserWithPassword } from "../../domain/ports/AdminUserRepository.js";
 
 export class DrizzleAdminUserRepository implements AdminUserRepository {
   async findByEmail(email: string): Promise<AdminUserWithPassword | null> {

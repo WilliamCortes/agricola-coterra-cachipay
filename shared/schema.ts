@@ -1,2 +1,2 @@
-export * from "./schema.base";
-export * from "./schema.messages";
+export * from "./schema.base.js";
+export * from "./schema.messages.js";

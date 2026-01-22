@@ -1,11 +1,11 @@
 import type { Express } from "express";
 import express from "express";
 import { z } from "zod";
-import { db } from "../../../db";
-import { adminActivityLogs, businessSettings } from "@shared/schema";
+import { db } from "../../../db.js";
+import { adminActivityLogs, businessSettings } from "../../../../shared/schema.js";
 import { asc, desc, sql } from "drizzle-orm";
-import { JoseTokenService } from "../infrastructure/jwt/JoseTokenService";
-import { createRequireAdminAuth } from "./http/requireAdminAuth";
+import { JoseTokenService } from "../infrastructure/jwt/JoseTokenService.js";
+import { createRequireAdminAuth } from "./http/requireAdminAuth.js";
 
 function getJwtSecret() {
   return process.env.ADMIN_JWT_SECRET || null;
@@ -125,4 +125,3 @@ export function registerAdminSettingsRoutes(app: Express) {
 
   app.use("/api/admin/settings", router);
 }
-

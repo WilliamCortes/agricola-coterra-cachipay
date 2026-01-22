@@ -1,23 +1,23 @@
 import type { Express } from "express";
 import express from "express";
 import { z } from "zod";
-import { DrizzleAdminUserRepository } from "../infrastructure/repositories/DrizzleAdminUserRepository";
-import { DrizzleAdminRefreshTokenRepository } from "../infrastructure/repositories/DrizzleAdminRefreshTokenRepository";
-import { DrizzlePasswordResetTokenRepository } from "../infrastructure/repositories/DrizzlePasswordResetTokenRepository";
-import { ScryptPasswordHasher } from "../infrastructure/crypto/ScryptPasswordHasher";
-import { TokenGenerator } from "../infrastructure/crypto/TokenGenerator";
-import { JoseTokenService } from "../infrastructure/jwt/JoseTokenService";
-import { SystemClock } from "../infrastructure/clock/SystemClock";
-import { NodemailerEmailSender } from "../infrastructure/email/NodemailerEmailSender";
-import { LoginAdminUseCase } from "../application/useCases/LoginAdminUseCase";
-import { RefreshAdminSessionUseCase } from "../application/useCases/RefreshAdminSessionUseCase";
-import { LogoutAdminUseCase } from "../application/useCases/LogoutAdminUseCase";
-import { GetCurrentAdminUseCase } from "../application/useCases/GetCurrentAdminUseCase";
-import { RequestPasswordResetUseCase } from "../application/useCases/RequestPasswordResetUseCase";
-import { ResetPasswordUseCase } from "../application/useCases/ResetPasswordUseCase";
-import { clearAuthCookies, getCookie, setAuthCookies } from "./http/cookies";
-import { createSimpleRateLimit } from "./http/rateLimit";
-import { createRequireAdminAuth } from "./http/requireAdminAuth";
+import { DrizzleAdminUserRepository } from "../infrastructure/repositories/DrizzleAdminUserRepository.js";
+import { DrizzleAdminRefreshTokenRepository } from "../infrastructure/repositories/DrizzleAdminRefreshTokenRepository.js";
+import { DrizzlePasswordResetTokenRepository } from "../infrastructure/repositories/DrizzlePasswordResetTokenRepository.js";
+import { ScryptPasswordHasher } from "../infrastructure/crypto/ScryptPasswordHasher.js";
+import { TokenGenerator } from "../infrastructure/crypto/TokenGenerator.js";
+import { JoseTokenService } from "../infrastructure/jwt/JoseTokenService.js";
+import { SystemClock } from "../infrastructure/clock/SystemClock.js";
+import { NodemailerEmailSender } from "../infrastructure/email/NodemailerEmailSender.js";
+import { LoginAdminUseCase } from "../application/useCases/LoginAdminUseCase.js";
+import { RefreshAdminSessionUseCase } from "../application/useCases/RefreshAdminSessionUseCase.js";
+import { LogoutAdminUseCase } from "../application/useCases/LogoutAdminUseCase.js";
+import { GetCurrentAdminUseCase } from "../application/useCases/GetCurrentAdminUseCase.js";
+import { RequestPasswordResetUseCase } from "../application/useCases/RequestPasswordResetUseCase.js";
+import { ResetPasswordUseCase } from "../application/useCases/ResetPasswordUseCase.js";
+import { clearAuthCookies, getCookie, setAuthCookies } from "./http/cookies.js";
+import { createSimpleRateLimit } from "./http/rateLimit.js";
+import { createRequireAdminAuth } from "./http/requireAdminAuth.js";
 
 const loginSchema = z.object({
   email: z.string().email(),

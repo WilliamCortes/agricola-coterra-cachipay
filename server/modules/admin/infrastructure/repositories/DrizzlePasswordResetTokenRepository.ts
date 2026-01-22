@@ -1,10 +1,10 @@
-import { db } from "../../../../db";
-import { passwordResetTokens } from "@shared/schema";
+import { db } from "../../../../db.js";
+import { passwordResetTokens } from "../../../../../shared/schema.js";
 import { and, eq, gt, isNull } from "drizzle-orm";
 import type {
   PasswordResetTokenRepository,
   StoredPasswordResetToken,
-} from "../../domain/ports/PasswordResetTokenRepository";
+} from "../../domain/ports/PasswordResetTokenRepository.js";
 
 export class DrizzlePasswordResetTokenRepository implements PasswordResetTokenRepository {
   async create(input: { adminUserId: number; tokenHash: string; expiresAt: Date }): Promise<void> {

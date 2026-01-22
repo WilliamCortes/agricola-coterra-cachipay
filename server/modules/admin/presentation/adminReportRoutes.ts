@@ -1,11 +1,11 @@
 import type { Express } from "express";
 import express from "express";
 import { z } from "zod";
-import { db } from "../../../db";
-import { customers, orderItems, orders, products } from "@shared/schema";
+import { db } from "../../../db.js";
+import { customers, orderItems, orders, products } from "../../../../shared/schema.js";
 import { and, asc, desc, eq, sql } from "drizzle-orm";
-import { JoseTokenService } from "../infrastructure/jwt/JoseTokenService";
-import { createRequireAdminAuth } from "./http/requireAdminAuth";
+import { JoseTokenService } from "../infrastructure/jwt/JoseTokenService.js";
+import { createRequireAdminAuth } from "./http/requireAdminAuth.js";
 
 function getJwtSecret() {
   return process.env.ADMIN_JWT_SECRET || null;
@@ -168,4 +168,3 @@ function escapeCsv(value: string) {
   if (/[",\n]/.test(safe)) return `"${safe}"`;
   return safe;
 }
-

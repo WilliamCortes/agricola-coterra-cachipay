@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { insertMessageSchema, categories, products, testimonials } from './schema';
+import { insertMessageSchema, categories, products, testimonials } from './schema.js';
 
 export const errorSchemas = {
   validation: z.object({
