@@ -16,13 +16,17 @@ export function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isHomeRoute = location === "/";
-  const isSolid = scrolled || !isHomeRoute;
+  const isOverlayRoute =
+    location === "/" ||
+    location.startsWith("/products") ||
+    location === "/contact" ||
+    location === "/privacy";
+  const isSolid = scrolled || !isOverlayRoute;
 
   const links = [
     { href: "/", label: "Inicio", icon: Home },
@@ -102,15 +106,35 @@ export function Navbar() {
           </div>
 
           <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={cn(
-                "p-2 rounded-md transition-colors",
-                isSolid ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/20"
-              )}
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            <div className="flex items-center gap-2">
+              <Link href="/cart" className="relative" onClick={() => setIsOpen(false)}>
+                <span
+                  className={cn(
+                    "inline-flex items-center justify-center h-10 w-10 rounded-md transition-colors cursor-pointer",
+                    isSolid ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/20"
+                  )}
+                  aria-label="Carrito"
+                >
+                  <ShoppingCart className="h-5 w-5" />
+                </span>
+                {itemsCount > 0 ? (
+                  <span className="absolute -top-1 -right-1 min-w-5 h-5 px-1 rounded-full bg-secondary text-white text-[11px] font-bold flex items-center justify-center shadow">
+                    {itemsCount}
+                  </span>
+                ) : null}
+              </Link>
+
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={cn(
+                  "p-2 rounded-md transition-colors",
+                  isSolid ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/20"
+                )}
+                aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+              >
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </div>

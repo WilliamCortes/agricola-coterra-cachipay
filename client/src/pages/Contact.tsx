@@ -37,7 +37,7 @@ export default function Contact() {
                   </div>
                   <h3 className="font-bold text-lg mb-2">Ubicación</h3>
                   <p className="text-muted-foreground text-sm">
-                    Vereda El Centro<br />
+                    Barrio Centro<br />
                     Cachipay, Cundinamarca
                   </p>
                 </div>
