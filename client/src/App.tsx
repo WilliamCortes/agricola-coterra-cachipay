@@ -10,6 +10,7 @@ import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 import Contact from "@/pages/Contact";
 import Privacy from "@/pages/Privacy";
+import Cart from "@/pages/Cart";
 import AdminLoginPage from "@/features/admin/presentation/pages/AdminLoginPage";
 import AdminForgotPasswordPage from "@/features/admin/presentation/pages/AdminForgotPasswordPage";
 import AdminResetPasswordPage from "@/features/admin/presentation/pages/AdminResetPasswordPage";
@@ -21,6 +22,7 @@ import AdminCustomersPage from "@/features/admin/presentation/pages/AdminCustome
 import AdminCategoriesPage from "@/features/admin/presentation/pages/AdminCategoriesPage";
 import AdminReportsPage from "@/features/admin/presentation/pages/AdminReportsPage";
 import AdminSettingsPage from "@/features/admin/presentation/pages/AdminSettingsPage";
+import { CartProvider } from "@/features/cart/presentation/CartProvider";
 
 function Router() {
   return (
@@ -40,6 +42,7 @@ function Router() {
       <Route path="/products" component={Products} />
       <Route path="/contact" component={Contact} />
       <Route path="/privacy" component={Privacy} />
+      <Route path="/cart" component={Cart} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -49,10 +52,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Router />
-        <WhatsAppButton />
-        <CookieBanner />
+        <CartProvider>
+          <Toaster />
+          <Router />
+          <WhatsAppButton />
+          <CookieBanner />
+        </CartProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );

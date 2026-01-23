@@ -21,6 +21,7 @@ import { registerAdminOrderRoutes } from "./modules/admin/presentation/adminOrde
 import { registerAdminCustomerRoutes } from "./modules/admin/presentation/adminCustomerRoutes.js";
 import { registerAdminReportRoutes } from "./modules/admin/presentation/adminReportRoutes.js";
 import { registerAdminSettingsRoutes } from "./modules/admin/presentation/adminSettingsRoutes.js";
+import { registerStorefrontRoutes } from "./modules/storefront/presentation/storefrontRoutes.js";
 
 export async function registerRoutes(
   app: Express,
@@ -34,6 +35,7 @@ export async function registerRoutes(
   registerAdminCustomerRoutes(app);
   registerAdminReportRoutes(app);
   registerAdminSettingsRoutes(app);
+  registerStorefrontRoutes(app);
 
   app.get("/api/health", (_req, res) => {
     res.json({ status: "ok", timestamp: new Date().toISOString() });

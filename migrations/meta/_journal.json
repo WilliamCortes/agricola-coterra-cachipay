@@ -8,6 +8,13 @@
       "when": 1768711323947,
       "tag": "0000_motionless_morlocks",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1769190700000,
+      "tag": "0001_storefront_orders",
+      "breakpoints": true
     }
   ]
 }

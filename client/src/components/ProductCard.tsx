@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, Check } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useCart } from "@/features/cart/presentation/CartProvider";
 
 interface ProductCardProps {
   product: Product;
@@ -13,6 +14,7 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   const { toast } = useToast();
   const [added, setAdded] = useState(false);
+  const { addProduct } = useCart();
 
   const price = new Intl.NumberFormat('es-CO', {
     style: 'currency',
@@ -21,6 +23,7 @@ export function ProductCard({ product }: ProductCardProps) {
   }).format(product.price);
 
   const handleAddToCart = () => {
+    addProduct(product, 1);
     setAdded(true);
     toast({
       title: "Producto agregado",
@@ -68,7 +71,7 @@ export function ProductCard({ product }: ProductCardProps) {
           className="w-full font-semibold gap-2 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
           variant={added ? "secondary" : "outline"}
           onClick={handleAddToCart}
-          disabled={added}
+          disabled={added || (product.stock !== null && product.stock !== undefined && product.stock <= 0)}
         >
           {added ? (
             <>

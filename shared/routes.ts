@@ -69,6 +69,55 @@ export const api = {
       },
     },
   },
+  storefront: {
+    settings: {
+      method: 'GET' as const,
+      path: '/api/storefront/settings',
+      responses: {
+        200: z.object({
+          settings: z.object({
+            businessName: z.string(),
+            phone: z.string().nullable(),
+            address: z.string().nullable(),
+            shippingCosts: z.unknown().nullable(),
+            paymentMethods: z.unknown().nullable(),
+          }),
+        }),
+      },
+    },
+  },
+  orders: {
+    create: {
+      method: 'POST' as const,
+      path: '/api/orders',
+      input: z.object({
+        customer: z.object({
+          name: z.string().min(2).max(200),
+          phone: z.string().min(3).max(60),
+          email: z.string().email().nullable().optional(),
+        }),
+        deliveryAddress: z.string().nullable().optional(),
+        notes: z.string().nullable().optional(),
+        items: z.array(z.object({ productId: z.number().int().positive(), quantity: z.number().int().min(1).max(999) })).min(1),
+        shipping: z
+          .object({
+            cost: z.number().int().min(0),
+            zone: z.string().min(1).max(120),
+          })
+          .nullable()
+          .optional(),
+      }),
+      responses: {
+        201: z.object({
+          orderId: z.number().int(),
+          orderNumber: z.string(),
+          total: z.number().int(),
+          status: z.string(),
+        }),
+        400: errorSchemas.validation,
+      },
+    },
+  },
 };
 
 export function buildUrl(path: string, params?: Record<string, string | number>): string {
