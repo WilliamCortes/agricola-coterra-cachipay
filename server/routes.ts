@@ -22,6 +22,8 @@ import { registerAdminCustomerRoutes } from "./modules/admin/presentation/adminC
 import { registerAdminReportRoutes } from "./modules/admin/presentation/adminReportRoutes.js";
 import { registerAdminSettingsRoutes } from "./modules/admin/presentation/adminSettingsRoutes.js";
 import { registerStorefrontRoutes } from "./modules/storefront/presentation/storefrontRoutes.js";
+import { createSimpleRateLimit } from "./modules/admin/presentation/http/rateLimit.js";
+import { buildSitemapXml } from "./presentation/http/sitemap.js";
 
 export async function registerRoutes(
   app: Express,
@@ -39,6 +41,27 @@ export async function registerRoutes(
 
   app.get("/api/health", (_req, res) => {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
+  });
+
+  app.get("/sitemap.xml", async (req, res) => {
+    const host = String(req.headers["x-forwarded-host"] ?? req.headers.host ?? "");
+    const proto = String(req.headers["x-forwarded-proto"] ?? "http");
+    const baseUrl = process.env.APP_BASE_URL || (host ? `${proto}://${host}` : "https://coterra.vendo365.com");
+
+    const categories = await storage.getCategories();
+    const categoryPaths = categories
+      .map((c) => c.slug)
+      .filter(Boolean)
+      .map((slug) => `/products?category=${encodeURIComponent(slug)}`);
+
+    const xml = buildSitemapXml({
+      baseUrl,
+      paths: ["/", "/products", "/contact", "/privacy", ...categoryPaths],
+    });
+
+    res.status(200);
+    res.setHeader("Content-Type", "application/xml; charset=utf-8");
+    return res.send(xml);
   });
 
   app.get(api.categories.list.path, async (req, res) => {
@@ -75,7 +98,14 @@ export async function registerRoutes(
     res.json(result);
   });
 
-  app.post(api.contact.submit.path, async (req, res) => {
+  app.post(
+    api.contact.submit.path,
+    createSimpleRateLimit({
+      key: (req) => `${req.ip}:${String(req.body?.email ?? "")}`.toLowerCase(),
+      windowMs: 60_000,
+      max: 5,
+    }),
+    async (req, res) => {
     try {
       const input = api.contact.submit.input.parse(req.body);
       await storage.createMessage(input);
@@ -84,12 +114,13 @@ export async function registerRoutes(
       if (err instanceof z.ZodError) {
         return res.status(400).json({
           message: err.errors[0].message,
-          field: err.errors[0].path.join('.'),
+          field: err.errors[0].path.join("."),
         });
       }
       throw err;
     }
-  });
+    },
+  );
 
   return httpServer;
 }

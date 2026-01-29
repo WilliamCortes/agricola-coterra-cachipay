@@ -27,6 +27,8 @@ export function Navbar() {
     location === "/contact" ||
     location === "/privacy";
   const isSolid = scrolled || !isOverlayRoute;
+  const hasStickyBreadcrumbRoute =
+    location.startsWith("/products") || location === "/contact" || location === "/privacy";
 
   const links = [
     { href: "/", label: "Inicio", icon: Home },
@@ -36,10 +38,14 @@ export function Navbar() {
 
   return (
     <nav
+      data-navbar="main"
       className={cn(
         "fixed w-full z-50 transition-all duration-300",
         isSolid
-          ? "bg-white/95 backdrop-blur-md shadow-md py-2 border-b border-border/50"
+          ? cn(
+              "bg-white/95 backdrop-blur-md py-2",
+              !hasStickyBreadcrumbRoute && "shadow-md border-b border-border/50"
+            )
           : "bg-transparent py-4 md:py-6"
       )}
     >

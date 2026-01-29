@@ -16,6 +16,15 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        index: path.resolve(import.meta.dirname, "client", "index.html"),
+        products: path.resolve(import.meta.dirname, "client", "products.html"),
+        contact: path.resolve(import.meta.dirname, "client", "contact.html"),
+        privacy: path.resolve(import.meta.dirname, "client", "privacy.html"),
+        cart: path.resolve(import.meta.dirname, "client", "cart.html"),
+      },
+    },
   },
   server: {
     fs: {

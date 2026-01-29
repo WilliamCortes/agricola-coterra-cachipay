@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -33,6 +33,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { applySeo } from "@/lib/seo";
 
 const PHONE_ALLOWED_CHARACTERS_REGEX = /^[0-9+()\-\s.]+$/;
 
@@ -67,6 +68,14 @@ export function CartPage() {
 
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    applySeo({
+      title: "Carrito | Agrícola Coterra",
+      description: "Revisa tus productos, ajusta cantidades y realiza tu pedido.",
+      canonicalPath: "/cart",
+    });
+  }, []);
 
   const checkoutForm = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutFormSchema),

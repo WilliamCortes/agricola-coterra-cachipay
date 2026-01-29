@@ -1,4 +1,5 @@
 import { createApp } from "../server/app.js";
+import { randomUUID } from "node:crypto";
 
 let appInstance: any = null;
 
@@ -11,11 +12,16 @@ export default async function handler(req: any, res: any) {
     
     appInstance(req, res);
   } catch (error: any) {
-    console.error("Critical error in serverless function:", error);
+    const requestId = String(req?.headers?.["x-request-id"] ?? req?.headers?.["x-vercel-id"] ?? randomUUID());
+    try {
+      res.setHeader("X-Request-Id", requestId);
+    } catch {}
+
+    console.error("Critical error in serverless function:", { requestId, error });
     res.status(500).json({
-      message: "Internal Server Error (Function Invocation Failed)",
-      error: process.env.NODE_ENV === "production" ? "Check logs" : error.message,
-      stack: process.env.NODE_ENV === "production" ? undefined : error.stack,
+      message: "Internal Server Error",
+      requestId,
+      details: process.env.NODE_ENV === "production" ? undefined : String(error?.message ?? error),
     });
   }
 }

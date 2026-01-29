@@ -13,6 +13,8 @@ import {
 import { Link } from "wouter";
 import { ArrowRight, Star, Leaf, Dog, Wheat, Hammer, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { applySeo } from "@/lib/seo";
 
 const getCategoryIcon = (slug: string) => {
   switch (slug) {
@@ -30,6 +32,15 @@ export default function Home() {
   const { data: testimonials, isLoading: loadingTestimonials } = useTestimonials();
 
   const featuredProducts = products?.slice(0, 4) || [];
+
+  useEffect(() => {
+    applySeo({
+      title: "Agrícola Coterra | Insumos y alimentos para el campo",
+      description:
+        "Encuentra insumos agrícolas, herramientas y alimentos para potenciar tu producción y cuidar de tus animales.",
+      canonicalPath: "/",
+    });
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col font-sans">

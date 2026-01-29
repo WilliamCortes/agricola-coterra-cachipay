@@ -12,7 +12,20 @@ export function serveStatic(app: Express) {
 
   app.use(express.static(distPath));
 
-  app.use("/{*path}", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
+  const routeToHtml = new Map<string, string>([
+    ["/products", "products.html"],
+    ["/contact", "contact.html"],
+    ["/privacy", "privacy.html"],
+    ["/cart", "cart.html"],
+  ]);
+
+  app.use("/{*path}", (req, res) => {
+    const fullPath = req.baseUrl || req.path;
+    const urlPath = fullPath.endsWith("/") && fullPath.length > 1 ? fullPath.slice(0, -1) : fullPath;
+    const htmlName = routeToHtml.get(urlPath);
+    if (htmlName && fs.existsSync(path.resolve(distPath, htmlName))) {
+      return res.sendFile(path.resolve(distPath, htmlName));
+    }
+    return res.sendFile(path.resolve(distPath, "index.html"));
   });
 }

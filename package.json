@@ -9,11 +9,16 @@
     "build:client": "vite build",
     "start": "cross-env NODE_ENV=production node dist-server/index.cjs",
     "check": "tsc",
+    "verify:secrets": "node script/verifyNoTrackedSecrets.js",
+    "check:ci": "npm run check && npm run verify:secrets && npm test",
     "cloudinary:sync": "tsx script/cloudinarySync.ts",
     "admin:seed": "tsx script/seedAdminUser.ts",
     "db:bootstrap": "tsx script/dbBootstrap.ts",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "node script/dbPushDev.js",
+    "db:push:dev": "node script/dbPushDev.js",
     "test": "node --test --import tsx server/modules/admin/**/*.test.ts",
-    "db:push": "drizzle-kit push --force"
+    "db:push:prod": "node script/dbPushDev.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

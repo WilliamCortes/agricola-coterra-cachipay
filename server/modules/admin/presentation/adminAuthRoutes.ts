@@ -35,7 +35,13 @@ const resetSchema = z.object({
 });
 
 function getAppBaseUrl() {
-  return process.env.APP_BASE_URL || "http://localhost:5000";
+  const explicit = process.env.APP_BASE_URL;
+  if (explicit) return explicit;
+
+  const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+  if (vercelHost) return `https://${vercelHost}`;
+
+  return "http://localhost:5000";
 }
 
 function getJwtSecret() {
